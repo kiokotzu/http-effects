@@ -1,0 +1,17 @@
+<header>
+  <nav>
+    <ul>
+      <li routerLinkActive="active"><a routerLink="home">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="user/1">User</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div>
+  <input type="text"
+         (keyup.enter)="userToGo(textInput.value)"
+         #textInput>
+  <button
+    (click)="userToGo(textInput.value)"
+  >Search</button>
+</div>
