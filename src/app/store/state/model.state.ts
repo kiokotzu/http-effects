@@ -1,7 +1,7 @@
 
 
 export type ModelState = Readonly<{
-  listUsers: Array<>
+  listUsers: Array<object>
 }>;
 
 export const INITIAL_MODELS_STATE: ModelState = {
