@@ -1,7 +1,7 @@
-import {models} from './models';
+import { global } from './global';
 
 const reducers = {
-  models: models
+  global: global
 };
 
 export const rootReducer = reducers;

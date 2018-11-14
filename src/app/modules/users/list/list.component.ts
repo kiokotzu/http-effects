@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { UserService } from '../../../core/services/user.service';
 import { User } from '../../../core/models/user.model';
+import { ApplicationState } from '../../../store/state/application.state';
+import { LoadUsers } from '../../../store/actions/global/users.action';
 
 @Component({
   selector: 'app-list',
@@ -13,10 +15,10 @@ export class ListComponent implements OnInit {
 
   public users: Array<User>;
 
-  constructor(private userService: UserService) { }
+  constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(data => this.users = data);
+    this.store.dispatch(new LoadUsers());
   }
 
 }
