@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Store } from '@ngrx/store';
 
 import { User } from '../../../core/models/user.model';
-import { ApplicationState } from '../../../store/state/application.state';
-import { LoadUsers } from '../../../store/actions/global/users.action';
+import { UsersModel } from '../users.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -15,10 +14,22 @@ export class ListComponent implements OnInit {
 
   public users: Array<User>;
 
-  constructor(private store: Store<ApplicationState>) { }
+  constructor(private model: UsersModel) { }
 
   ngOnInit(): void {
-    this.store.dispatch(new LoadUsers());
+    this.model.loadUsers();
+  }
+
+  get users$(): Observable<User[]> {
+    return this.model.users$;
+  }
+
+  get loading$(): Observable<boolean> {
+    return this.model.loading$;
+  }
+
+  get error$(): Observable<object> {
+    return this.model.error$;
   }
 
 }

@@ -1,7 +1,19 @@
 <ul class="list-users">
-  <li *ngFor="let user of users">
-    <h1>{{user.first_name}} {{user.last_name}}</h1>
-    <img [src]="user.avatar" alt="">
-    <small>id: {{user.id}}</small>
-  </li>
+  <div *ngIf="loading$ | async">
+    loading
+  </div>
+  <div *ngIf="!(loading$ | async)">
+    <li *ngFor="let user of users$ | async">
+      <h1>{{user.first_name}} {{user.last_name}}</h1>
+      <img [src]="user.avatar" alt="">
+      <small>id: {{user.id}}</small>
+    </li>
+  </div>
+
+
+  <div *ngIf="error$ | async as err">
+    <h1>{{err.status}}</h1>
+    <p>{{err.message}}</p>
+    <p>{{err.url}}</p>
+  </div>
 </ul>

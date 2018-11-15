@@ -1,3 +1,15 @@
-<p>
-  user works!
-</p>
+<div *ngIf="loading$ | async">
+  loading
+</div>
+
+<div *ngIf="(user$ | async) as user">
+  <img [src]="user.avatar" alt="">
+  <h1>{{user.first_name}}</h1>
+  <p>{{user.last_name}}</p>
+</div>
+
+<div *ngIf="error$ | async as err">
+  <h1>{{err.status}}</h1>
+  <p>{{err.message}}</p>
+  <p>{{err.url}}</p>
+</div>

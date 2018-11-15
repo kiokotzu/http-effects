@@ -1,7 +1,9 @@
 import { combineReducers } from '@ngrx/store';
 
-import { userReducer as listUsers } from './users/users.reducer';
+import { usersReducer as listUsers } from './users/users.reducer';
+import { userReducer as user } from './users/user.reducer';
 
 export const global = combineReducers({
-  listUsers
+  listUsers,
+  user
 });

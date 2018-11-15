@@ -12,6 +12,8 @@ import { rootReducer } from './store/reducers/root.reducer';
 import { environment as ENV } from '../environments/environment';
 import { UsersModule } from './modules/users/users.module';
 import { rootEffects } from './store/effects';
+import { ApplicationModel } from './application.model';
+import { UsersModel } from './modules/users/users.model';
 
 export const REDUCER_TOKEN = new InjectionToken('Registered REducers');
 
@@ -30,6 +32,8 @@ export const REDUCER_TOKEN = new InjectionToken('Registered REducers');
     ENV.imports
   ],
   providers: [
+    ApplicationModel,
+    UsersModel,
     {
       provide: INITIAL_STATE,
       useValue: INITIAL_APPLICATION_STATE

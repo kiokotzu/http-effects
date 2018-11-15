@@ -8,3 +8,7 @@ export interface ListUsers {
   total_pages: number;
   data: Array<User>;
 }
+
+export interface UserData {
+  data: User;
+}

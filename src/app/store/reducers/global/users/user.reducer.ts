@@ -1,31 +1,31 @@
-import * as fromUSers from '../../../actions/global/users.action';
-import { UsersState } from '../../../state/global.state';
+import * as fromUSer from '../../../actions/global/user.action';
+import { UserState } from '../../../state/global.state';
 
 
-const initState: UsersState = {
- users: [],
- loaded: false,
- loading: false,
- error: null
+const initState: UserState = {
+  user: null,
+  loaded: false,
+  loading: false,
+  error: null
 };
 
-export function usersReducer(state = initState, action: fromUSers.actions): UsersState {
+export function userReducer(state = initState, action: fromUSer.actions): UserState {
   switch (action.type) {
-    case fromUSers.LOAD_USERS:
+    case fromUSer.LOAD_USER:
       return {
         ...state,
         loading: true
       };
 
-    case fromUSers.LOAD_USERS_SUCCESS:
+    case fromUSer.LOAD_USER_SUCCESS:
       return {
         ...state,
         loading: false,
         loaded: true,
-        users: [...action.users]
+        user: action.user
       };
 
-    case fromUSers.LOAD_USERS_FAIL:
+    case fromUSer.LOAD_USER_FAIL:
       return {
         ...state,
         loading: false,
